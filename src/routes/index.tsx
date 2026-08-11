@@ -132,12 +132,12 @@ const projects = [
 ];
 
 const skills = [
-  { label: "Languages", items: "C#, Java, Python, JavaScript, TypeScript, C, C++" },
-  { label: "Backend", items: "Node.js (Express.js), .NET Core" },
-  { label: "Frontend", items: "React.js, Redux, Angular, HTML5, CSS3" },
-  { label: "Databases", items: "PostgreSQL, MongoDB, SQL Server, Supabase" },
-  { label: "Tools", items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API" },
-  { label: "Systems", items: "Windows, Linux" },
+  { label: "Languages", icon: Code2, items: "C#, Java, Python, JavaScript, TypeScript, C, C++" },
+  { label: "Backend", icon: Server, items: "Node.js (Express.js), .NET Core" },
+  { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, HTML5, CSS3" },
+  { label: "Databases", icon: Database, items: "PostgreSQL, MongoDB, SQL Server, Supabase" },
+  { label: "Tools", icon: Wrench, items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API" },
+  { label: "Systems", icon: Monitor, items: "Windows, Linux" },
 ];
 
 function Portfolio() {
