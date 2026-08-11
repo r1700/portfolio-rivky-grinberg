@@ -1,6 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { TypedWord } from "@/components/TypedWord";
+import {
+  Brain,
+  Megaphone,
+  Code2,
+  Server,
+  Layout,
+  Database,
+  Wrench,
+  Monitor,
+  ExternalLink,
+  ArrowUpRight,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -101,6 +113,8 @@ const projects = [
     summary:
       "Web system that lets teachers create, edit, manage and export exams with AI assistance.",
     stack: ["Node.js", "Express", "React", "MongoDB", "OpenAI API"],
+    icon: Brain,
+    accent: "from-primary/20 to-accent/20",
     links: [
       { label: "Live demo", href: "https://click-quiz.vercel.app" },
       { label: "Source", href: "https://github.com/r1700/ClickQuiz-Creating-tests" },
@@ -111,17 +125,19 @@ const projects = [
     summary:
       "Full-stack platform for business subscriptions and advertisement management, designed end to end.",
     stack: ["C#", ".NET Core", "React", "Redux", "SQL Server", "Material-UI"],
+    icon: Megaphone,
+    accent: "from-accent/20 to-primary/20",
     links: [{ label: "Source", href: "https://github.com/r1700/advertising_project" }],
   },
 ];
 
 const skills = [
-  { label: "Languages", items: "C#, Java, Python, JavaScript, TypeScript, C, C++" },
-  { label: "Backend", items: "Node.js (Express.js), .NET Core" },
-  { label: "Frontend", items: "React.js, Redux, Angular, HTML5, CSS3" },
-  { label: "Databases", items: "PostgreSQL, MongoDB, SQL Server, Supabase" },
-  { label: "Tools", items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API" },
-  { label: "Systems", items: "Windows, Linux" },
+  { label: "Languages", icon: Code2, items: "C#, Java, Python, JavaScript, TypeScript, C, C++" },
+  { label: "Backend", icon: Server, items: "Node.js (Express.js), .NET Core" },
+  { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, HTML5, CSS3" },
+  { label: "Databases", icon: Database, items: "PostgreSQL, MongoDB, SQL Server, Supabase" },
+  { label: "Tools", icon: Wrench, items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API" },
+  { label: "Systems", icon: Monitor, items: "Windows, Linux" },
 ];
 
 function Portfolio() {
@@ -244,95 +260,98 @@ function Portfolio() {
           <Reveal>
             <h2 className="eyebrow">Selected projects</h2>
           </Reveal>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {projects.map((project, i) => (
-              <Reveal key={project.name} delay={i * 140}>
-                <article className="group">
-                  <div className="h-px w-full origin-left scale-x-100 bg-border transition-colors duration-500 group-hover:bg-primary" />
-                  <h3 className="mt-6 font-display text-2xl transition-transform duration-500 group-hover:translate-x-1">
-                    {project.name}
-                  </h3>
-                  <p className="mt-3 max-w-[42ch] leading-relaxed text-muted-foreground text-pretty">
-                    {project.summary}
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    {project.links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:bg-surface hover:text-foreground"
-                      >
-                        {link.label}
-                        <span className="text-[10px] transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
-                          ↗
-                        </span>
-                      </a>
-                    ))}
-                  </div>
-                  <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="font-mono text-[11px] tracking-wide text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              </Reveal>
-            ))}
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {projects.map((project, i) => {
+              const Icon = project.icon;
+              return (
+                <Reveal key={project.name} delay={i * 140}>
+                  <article className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card">
+                    <div
+                      className={`relative h-32 bg-gradient-to-br ${project.accent} p-6`}
+                    >
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border bg-card/90 shadow-sm backdrop-blur-sm">
+                        <Icon className="size-6 text-primary" strokeWidth={1.8} />
+                      </div>
+                      <div className="absolute top-4 right-4 flex gap-1.5">
+                        <span className="size-2.5 rounded-full bg-card/60" />
+                        <span className="size-2.5 rounded-full bg-card/60" />
+                        <span className="size-2.5 rounded-full bg-card/60" />
+                      </div>
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-display text-2xl leading-tight">
+                          {project.name}
+                        </h3>
+                        <a
+                          href={project.links[0]?.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-1 shrink-0 rounded-full border p-2 text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground"
+                          aria-label={`Open ${project.name}`}
+                        >
+                          <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      </div>
+                      <p className="mt-3 flex-1 leading-relaxed text-muted-foreground text-pretty">
+                        {project.summary}
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {project.stack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-md bg-muted px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-5 flex flex-wrap gap-3 border-t pt-5">
+                        {project.links.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors duration-300 hover:text-foreground"
+                          >
+                            {link.label}
+                            <ExternalLink className="size-3.5" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 
         <section id="skills" className="bg-ink text-ink-foreground">
-          <div className="mx-auto grid max-w-5xl gap-16 px-6 py-24 md:grid-cols-2">
-            <div>
-              <Reveal>
-                <h2 className="font-mono text-[11px] tracking-[0.18em] text-ink-foreground/50 uppercase">
-                  Skills
-                </h2>
-              </Reveal>
-              <dl className="mt-10 space-y-6">
-                {skills.map((skill, i) => (
-                  <Reveal key={skill.label} delay={i * 70}>
-                    <dt className="text-sm font-medium">{skill.label}</dt>
-                    <dd className="mt-1 text-sm leading-relaxed text-ink-foreground/60">
-                      {skill.items}
-                    </dd>
+          <div className="mx-auto max-w-5xl px-6 py-24">
+            <Reveal>
+              <h2 className="font-mono text-[11px] tracking-[0.18em] text-ink-foreground/50 uppercase">
+                Skills
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {skills.map((skill, i) => {
+                const Icon = skill.icon;
+                return (
+                  <Reveal key={skill.label} delay={i * 80}>
+                    <div className="card-lift group flex h-full flex-col rounded-2xl border border-ink-foreground/10 bg-ink-foreground/[0.03] p-6">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-foreground/10 bg-ink-foreground/5">
+                        <Icon className="size-5 text-ink-foreground/70" strokeWidth={1.8} />
+                      </div>
+                      <h3 className="mt-5 font-display text-lg">{skill.label}</h3>
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-foreground/55 text-pretty">
+                        {skill.items}
+                      </p>
+                    </div>
                   </Reveal>
-                ))}
-              </dl>
-            </div>
-            <div>
-              <Reveal>
-                <h2 className="font-mono text-[11px] tracking-[0.18em] text-ink-foreground/50 uppercase">
-                  Education & languages
-                </h2>
-              </Reveal>
-              <div className="mt-10 space-y-8">
-                <Reveal delay={80}>
-                  <p className="font-display text-2xl">Diploma in Software Engineering</p>
-                  <p className="mt-1 text-sm text-ink-foreground/60">
-                    MAHAT, 2023 — 2025 · Graduated with High Honors
-                  </p>
-                </Reveal>
-                <Reveal delay={160} className="border-t border-ink-foreground/10 pt-8">
-                  <p className="text-sm font-medium">KamaTech Program — extended studies</p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-foreground/60">
-                    Algorithms & Data Structures, Operating Systems, Design Patterns, Software
-                    Architecture, System Analysis, Networks & Communication.
-                  </p>
-                </Reveal>
-                <Reveal delay={240} className="border-t border-ink-foreground/10 pt-8">
-                  <p className="text-sm font-medium">Languages</p>
-                  <p className="mt-1 text-sm text-ink-foreground/60">
-                    Hebrew — Native · English — Advanced
-                  </p>
-                </Reveal>
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
