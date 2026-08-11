@@ -10,8 +10,12 @@ import {
   Database,
   Wrench,
   Monitor,
-  ExternalLink,
   ArrowUpRight,
+  Github,
+  Globe,
+  Mail,
+  Phone,
+  Linkedin,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
