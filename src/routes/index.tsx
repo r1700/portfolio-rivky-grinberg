@@ -30,6 +30,11 @@ export const Route = createFileRoute("/")({
           jobTitle: "Software Developer",
           email: "mailto:r6731700@gmail.com",
           telephone: "+972-55-6731700",
+          url: "https://github.com/r1700",
+          sameAs: [
+            "https://github.com/r1700",
+            "https://www.linkedin.com/in/rivky-grinberg",
+          ],
           knowsLanguage: ["Hebrew", "English"],
         }),
       },
@@ -92,16 +97,21 @@ const experience = [
 
 const projects = [
   {
-    name: "AI-Powered Exam Creation Platform",
+    name: "ClickQuiz — AI Exam Creation",
     summary:
       "Web system that lets teachers create, edit, manage and export exams with AI assistance.",
     stack: ["Node.js", "Express", "React", "MongoDB", "OpenAI API"],
+    links: [
+      { label: "Live demo", href: "https://click-quiz.vercel.app" },
+      { label: "Source", href: "https://github.com/r1700/ClickQuiz-Creating-tests" },
+    ],
   },
   {
-    name: "Subscription Management System",
+    name: "Subscription & Advertising Platform",
     summary:
       "Full-stack platform for business subscriptions and advertisement management, designed end to end.",
     stack: ["C#", ".NET Core", "React", "Redux", "SQL Server", "Material-UI"],
+    links: [{ label: "Source", href: "https://github.com/r1700/advertising_project" }],
   },
 ];
 
@@ -245,6 +255,22 @@ function Portfolio() {
                   <p className="mt-3 max-w-[42ch] leading-relaxed text-muted-foreground text-pretty">
                     {project.summary}
                   </p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:bg-surface hover:text-foreground"
+                      >
+                        {link.label}
+                        <span className="text-[10px] transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
+                          ↗
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                   <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
                     {project.stack.map((tech) => (
                       <span
@@ -321,11 +347,14 @@ function Portfolio() {
             {[
               { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com" },
               { label: "055-6731700", href: "tel:+972556731700" },
-              { label: "GitHub", href: "https://github.com/" },
+              { label: "github.com/r1700", href: "https://github.com/r1700" },
+              { label: "linkedin.com/in/rivky-grinberg", href: "https://www.linkedin.com/in/rivky-grinberg" },
             ].map((link, i) => (
               <Reveal key={link.label} delay={i * 100}>
                 <a
                   href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="underline-sweep w-fit transition-colors duration-300 hover:text-primary"
                 >
                   {link.label}
