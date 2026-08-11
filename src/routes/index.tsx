@@ -373,24 +373,31 @@ function Portfolio() {
               Open to backend and full-stack opportunities.
             </h2>
           </Reveal>
-          <div className="mt-10 flex flex-col items-start gap-4 font-mono text-sm">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {[
-              { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com" },
-              { label: "055-6731700", href: "tel:+972556731700" },
-              { label: "github.com/r1700", href: "https://github.com/r1700" },
-              { label: "linkedin.com/in/rivky-grinberg", href: "https://www.linkedin.com/in/rivky-grinberg" },
-            ].map((link, i) => (
-              <Reveal key={link.label} delay={i * 100}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline-sweep w-fit transition-colors duration-300 hover:text-primary"
-                >
-                  {link.label}
-                </a>
-              </Reveal>
-            ))}
+              { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com", icon: Mail },
+              { label: "055-6731700", href: "tel:+972556731700", icon: Phone },
+              { label: "GitHub", href: "https://github.com/r1700", icon: Github },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/rivky-grinberg", icon: Linkedin },
+            ].map((link, i) => {
+              const Icon = link.icon;
+              return (
+                <Reveal key={link.label} delay={i * 100}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 rounded-2xl border p-4 transition-all duration-300 hover:border-primary/40 hover:bg-surface"
+                  >
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border bg-muted">
+                      <Icon className="size-5 text-primary" strokeWidth={1.8} />
+                    </span>
+                    <span className="font-mono text-sm">{link.label}</span>
+                    <ArrowUpRight className="ml-auto size-4 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                  </a>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
       </main>
