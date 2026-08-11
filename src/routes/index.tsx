@@ -284,7 +284,7 @@ function Portfolio() {
                           {project.name}
                         </h3>
                         <a
-                          href={project.links[0].href}
+                          href={project.links[0]?.href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="mt-1 shrink-0 rounded-full border p-2 text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground"
