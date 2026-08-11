@@ -255,6 +255,22 @@ function Portfolio() {
                   <p className="mt-3 max-w-[42ch] leading-relaxed text-muted-foreground text-pretty">
                     {project.summary}
                   </p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:bg-surface hover:text-foreground"
+                      >
+                        {link.label}
+                        <span className="text-[10px] transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
+                          ↗
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                   <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
                     {project.stack.map((tech) => (
                       <span
