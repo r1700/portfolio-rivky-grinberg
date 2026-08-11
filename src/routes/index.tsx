@@ -1,6 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { TypedWord } from "@/components/TypedWord";
+import {
+  Brain,
+  Megaphone,
+  Code2,
+  Server,
+  Layout,
+  Database,
+  Wrench,
+  Monitor,
+  ExternalLink,
+  ArrowUpRight,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
