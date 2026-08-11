@@ -113,6 +113,8 @@ const projects = [
     summary:
       "Web system that lets teachers create, edit, manage and export exams with AI assistance.",
     stack: ["Node.js", "Express", "React", "MongoDB", "OpenAI API"],
+    icon: Brain,
+    accent: "from-primary/20 to-accent/20",
     links: [
       { label: "Live demo", href: "https://click-quiz.vercel.app" },
       { label: "Source", href: "https://github.com/r1700/ClickQuiz-Creating-tests" },
@@ -123,6 +125,8 @@ const projects = [
     summary:
       "Full-stack platform for business subscriptions and advertisement management, designed end to end.",
     stack: ["C#", ".NET Core", "React", "Redux", "SQL Server", "Material-UI"],
+    icon: Megaphone,
+    accent: "from-accent/20 to-primary/20",
     links: [{ label: "Source", href: "https://github.com/r1700/advertising_project" }],
   },
 ];
