@@ -30,6 +30,11 @@ export const Route = createFileRoute("/")({
           jobTitle: "Software Developer",
           email: "mailto:r6731700@gmail.com",
           telephone: "+972-55-6731700",
+          url: "https://github.com/r1700",
+          sameAs: [
+            "https://github.com/r1700",
+            "https://www.linkedin.com/in/rivky-grinberg",
+          ],
           knowsLanguage: ["Hebrew", "English"],
         }),
       },
