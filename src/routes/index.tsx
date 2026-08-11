@@ -311,18 +311,25 @@ function Portfolio() {
                         ))}
                       </div>
                       <div className="mt-5 flex flex-wrap gap-3 border-t pt-5">
-                        {project.links.map((link) => (
-                          <a
-                            key={link.label}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors duration-300 hover:text-foreground"
-                          >
-                            {link.label}
-                            <ExternalLink className="size-3.5" />
-                          </a>
-                        ))}
+                        {project.links.map((link) => {
+                          const isSource =
+                            link.label.toLowerCase().includes("source") ||
+                            link.href.includes("github.com");
+                          const LinkIcon = isSource ? Github : Globe;
+                          const shortLabel = isSource ? "Code" : "Live";
+                          return (
+                            <a
+                              key={link.label}
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:border-primary/40 hover:bg-surface hover:text-foreground"
+                            >
+                              <LinkIcon className="size-4" />
+                              {shortLabel}
+                            </a>
+                          );
+                        })}
                       </div>
                     </div>
                   </article>
