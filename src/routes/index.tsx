@@ -347,11 +347,14 @@ function Portfolio() {
             {[
               { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com" },
               { label: "055-6731700", href: "tel:+972556731700" },
-              { label: "GitHub", href: "https://github.com/" },
+              { label: "github.com/r1700", href: "https://github.com/r1700" },
+              { label: "linkedin.com/in/rivky-grinberg", href: "https://www.linkedin.com/in/rivky-grinberg" },
             ].map((link, i) => (
               <Reveal key={link.label} delay={i * 100}>
                 <a
                   href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="underline-sweep w-fit transition-colors duration-300 hover:text-primary"
                 >
                   {link.label}
