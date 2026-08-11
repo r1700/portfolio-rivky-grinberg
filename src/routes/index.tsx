@@ -329,51 +329,29 @@ function Portfolio() {
         </section>
 
         <section id="skills" className="bg-ink text-ink-foreground">
-          <div className="mx-auto grid max-w-5xl gap-16 px-6 py-24 md:grid-cols-2">
-            <div>
-              <Reveal>
-                <h2 className="font-mono text-[11px] tracking-[0.18em] text-ink-foreground/50 uppercase">
-                  Skills
-                </h2>
-              </Reveal>
-              <dl className="mt-10 space-y-6">
-                {skills.map((skill, i) => (
-                  <Reveal key={skill.label} delay={i * 70}>
-                    <dt className="text-sm font-medium">{skill.label}</dt>
-                    <dd className="mt-1 text-sm leading-relaxed text-ink-foreground/60">
-                      {skill.items}
-                    </dd>
+          <div className="mx-auto max-w-5xl px-6 py-24">
+            <Reveal>
+              <h2 className="font-mono text-[11px] tracking-[0.18em] text-ink-foreground/50 uppercase">
+                Skills
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {skills.map((skill, i) => {
+                const Icon = skill.icon;
+                return (
+                  <Reveal key={skill.label} delay={i * 80}>
+                    <div className="card-lift group flex h-full flex-col rounded-2xl border border-ink-foreground/10 bg-ink-foreground/[0.03] p-6">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-foreground/10 bg-ink-foreground/5">
+                        <Icon className="size-5 text-ink-foreground/70" strokeWidth={1.8} />
+                      </div>
+                      <h3 className="mt-5 font-display text-lg">{skill.label}</h3>
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-foreground/55 text-pretty">
+                        {skill.items}
+                      </p>
+                    </div>
                   </Reveal>
-                ))}
-              </dl>
-            </div>
-            <div>
-              <Reveal>
-                <h2 className="font-mono text-[11px] tracking-[0.18em] text-ink-foreground/50 uppercase">
-                  Education & languages
-                </h2>
-              </Reveal>
-              <div className="mt-10 space-y-8">
-                <Reveal delay={80}>
-                  <p className="font-display text-2xl">Diploma in Software Engineering</p>
-                  <p className="mt-1 text-sm text-ink-foreground/60">
-                    MAHAT, 2023 — 2025 · Graduated with High Honors
-                  </p>
-                </Reveal>
-                <Reveal delay={160} className="border-t border-ink-foreground/10 pt-8">
-                  <p className="text-sm font-medium">KamaTech Program — extended studies</p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-foreground/60">
-                    Algorithms & Data Structures, Operating Systems, Design Patterns, Software
-                    Architecture, System Analysis, Networks & Communication.
-                  </p>
-                </Reveal>
-                <Reveal delay={240} className="border-t border-ink-foreground/10 pt-8">
-                  <p className="text-sm font-medium">Languages</p>
-                  <p className="mt-1 text-sm text-ink-foreground/60">
-                    Hebrew — Native · English — Advanced
-                  </p>
-                </Reveal>
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
