@@ -220,3 +220,10 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+@layer base {
+  .font-display {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+}
