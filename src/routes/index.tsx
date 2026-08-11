@@ -92,16 +92,21 @@ const experience = [
 
 const projects = [
   {
-    name: "AI-Powered Exam Creation Platform",
+    name: "ClickQuiz — AI Exam Creation",
     summary:
       "Web system that lets teachers create, edit, manage and export exams with AI assistance.",
     stack: ["Node.js", "Express", "React", "MongoDB", "OpenAI API"],
+    links: [
+      { label: "Live demo", href: "https://click-quiz.vercel.app" },
+      { label: "Source", href: "https://github.com/r1700/ClickQuiz-Creating-tests" },
+    ],
   },
   {
-    name: "Subscription Management System",
+    name: "Subscription & Advertising Platform",
     summary:
       "Full-stack platform for business subscriptions and advertisement management, designed end to end.",
     stack: ["C#", ".NET Core", "React", "Redux", "SQL Server", "Material-UI"],
+    links: [{ label: "Source", href: "https://github.com/r1700/advertising_project" }],
   },
 ];
 
