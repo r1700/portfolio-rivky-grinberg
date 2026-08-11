@@ -80,11 +80,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Rivky Grinberg — Software Developer" },
       {
         name: "description",
-        content: "Portfolio of Rivky Grinberg, backend and full-stack software developer.",
+        content: "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
       },
       { name: "author", content: "Rivky Grinberg" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Rivky Grinberg — Software Developer" },
+      { name: "twitter:title", content: "Rivky Grinberg — Software Developer" },
+      { property: "og:description", content: "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features." },
+      { name: "twitter:description", content: "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5682769f2cc5dfa1b1b7a2e7a1912737/id-preview-9159f36d--fd3c4234-00fd-4cdb-a088-1f6258d28385.lovable.app-1786434753513.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5682769f2cc5dfa1b1b7a2e7a1912737/id-preview-9159f36d--fd3c4234-00fd-4cdb-a088-1f6258d28385.lovable.app-1786434753513.png" },
     ],
     links: [
       {
@@ -97,7 +103,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
 
