@@ -19,6 +19,7 @@ import {
   Phone,
   Linkedin,
   Send,
+  FileDown,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
