@@ -65,6 +65,8 @@
   --ring: oklch(0.46 0.088 190 / 40%);
   --ink: oklch(0.22 0.018 250);
   --ink-foreground: oklch(0.95 0.006 106);
+  --success: oklch(0.62 0.14 150);
+  --success-foreground: oklch(0.99 0.004 106);
 }
 
 @keyframes rise {
