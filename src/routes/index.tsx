@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Reveal } from "@/components/Reveal";
 import { TypedWord } from "@/components/TypedWord";
 import {
@@ -16,6 +18,7 @@ import {
   Mail,
   Phone,
   Linkedin,
+  Send,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
