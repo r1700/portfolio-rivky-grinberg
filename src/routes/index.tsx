@@ -178,7 +178,15 @@ function Portfolio() {
             className="float-slow pointer-events-none absolute top-40 -left-40 size-[26rem] rounded-full bg-accent/15 blur-3xl [animation-delay:-6s]"
           />
           <div className="relative mx-auto max-w-5xl px-6 pt-20 pb-20 md:pt-32 md:pb-28">
-            <p className="eyebrow animate-rise">Software Developer · Backend & Full Stack</p>
+            <div className="animate-rise flex items-center gap-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/40 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-success" />
+              </span>
+              <span className="font-mono text-[11px] tracking-[0.16em] text-success uppercase">
+                Available for opportunities
+              </span>
+            </div>
             <h1 className="animate-rise mt-6 max-w-[26ch] font-display text-5xl leading-[1.05] text-balance md:text-7xl">
               I build <TypedWord />
               <br />
@@ -372,35 +380,45 @@ function Portfolio() {
 
         <section id="contact" className="mx-auto max-w-5xl px-6 py-28">
           <Reveal>
-            <h2 className="max-w-[20ch] font-display text-4xl leading-tight text-balance md:text-5xl">
-              Open to backend and full-stack opportunities.
-            </h2>
+            <h2 className="eyebrow">Contact</h2>
           </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {[
-              { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com", icon: Mail },
-              { label: "055-6731700", href: "tel:+972556731700", icon: Phone },
-              { label: "GitHub", href: "https://github.com/r1700", icon: Github },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/rivky-grinberg", icon: Linkedin },
-            ].map((link, i) => {
-              const Icon = link.icon;
-              return (
-                <Reveal key={link.label} delay={i * 100}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-3 rounded-2xl border p-4 transition-all duration-300 hover:border-primary/40 hover:bg-surface"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border bg-muted">
-                      <Icon className="size-5 text-primary" strokeWidth={1.8} />
-                    </span>
-                    <span className="font-mono text-sm">{link.label}</span>
-                    <ArrowUpRight className="ml-auto size-4 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-                  </a>
-                </Reveal>
-              );
-            })}
+          <div className="mt-12 grid gap-12 lg:grid-cols-2">
+            <Reveal>
+              <div>
+                <h3 className="max-w-[18ch] font-display text-4xl leading-tight text-balance md:text-5xl">
+                  Open to backend and full-stack opportunities.
+                </h3>
+                <p className="mt-4 max-w-[42ch] leading-relaxed text-muted-foreground">
+                  Have a role, project or question? Fill out the form or reach out directly — I'll get back to you as soon as I can.
+                </p>
+                <div className="mt-8 flex flex-col gap-4">
+                  {[
+                    { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com", icon: Mail },
+                    { label: "+972-55-6731700", href: "tel:+972556731700", icon: Phone },
+                    { label: "github.com/r1700", href: "https://github.com/r1700", icon: Github },
+                    { label: "linkedin.com/in/rivky-grinberg", href: "https://www.linkedin.com/in/rivky-grinberg", icon: Linkedin },
+                  ].map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex w-fit items-center gap-2.5 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                      >
+                        <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" strokeWidth={1.8} />
+                        <span className="underline-sweep">{link.label}</span>
+                        <ArrowUpRight className="size-3.5 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <ContactForm />
+            </Reveal>
           </div>
         </section>
       </main>
