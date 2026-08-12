@@ -214,6 +214,14 @@ function Portfolio() {
               >
                 See projects
               </a>
+              <a
+                href="/Rivky_Grinberg_CV.pdf"
+                download
+                className="inline-flex items-center gap-2 rounded-full border px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:border-primary/40 hover:bg-surface hover:text-foreground"
+              >
+                <FileDown className="size-4" />
+                Download CV
+              </a>
             </div>
           </div>
         </section>
