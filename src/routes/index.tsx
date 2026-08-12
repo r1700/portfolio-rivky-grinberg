@@ -188,11 +188,14 @@ function Portfolio() {
                 Available for opportunities
               </span>
             </div>
-            <h1 className="animate-rise mt-6 max-w-[26ch] font-display text-5xl leading-[1.05] text-balance md:text-7xl">
-              I build <TypedWord />
+            <h1 className="animate-rise mt-8 max-w-[18ch] font-display text-6xl leading-[1] text-balance md:text-8xl lg:text-9xl">
+              Software
               <br />
-              that quietly do the hard work.
+              Developer
             </h1>
+            <p className="animate-rise mt-8 max-w-[42ch] font-display text-2xl leading-snug text-balance text-foreground/90 md:text-3xl">
+              I build <TypedWord /> that quietly do the hard work.
+            </p>
             <p className="animate-rise mt-8 max-w-[62ch] text-lg leading-relaxed text-muted-foreground text-pretty md:text-xl">
               Software developer with experience in backend and full-stack development, specializing
               in REST APIs, backend architecture and AI-integrated features. I care about clean,
