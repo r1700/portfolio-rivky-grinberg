@@ -432,3 +432,72 @@ function Portfolio() {
     </div>
   );
 }
+
+function ContactForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    const subject = `Message from ${name} via portfolio`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.location.href = `mailto:r6731700@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    toast.success("Opening your email client...");
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border bg-card p-6">
+      <div>
+        <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Your name"
+          className="w-full rounded-xl border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
+        />
+      </div>
+      <div>
+        <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="w-full rounded-xl border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
+        />
+      </div>
+      <div>
+        <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+          Message
+        </label>
+        <textarea
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Tell me about the opportunity..."
+          rows={4}
+          className="w-full resize-none rounded-xl border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
+        />
+      </div>
+      <button
+        type="submit"
+        className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
+      >
+        Send message
+        <Send className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+      </button>
+    </form>
+  );
+}
