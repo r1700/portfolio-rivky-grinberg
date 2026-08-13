@@ -188,7 +188,10 @@ function Portfolio() {
                 Available for opportunities
               </span>
             </div>
-            <h1 className="animate-rise mt-8 max-w-[18ch] font-display text-6xl leading-[1] text-balance md:text-8xl lg:text-9xl">
+            <p className="animate-rise mt-8 font-display text-4xl leading-[1] text-balance text-foreground/80 md:text-6xl lg:text-7xl">
+              Rivky Grinberg
+            </p>
+            <h1 className="animate-rise mt-4 max-w-[18ch] font-display text-6xl leading-[1] text-balance md:text-8xl lg:text-9xl">
               Software
               <br />
               Developer
