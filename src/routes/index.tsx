@@ -194,7 +194,6 @@ function Portfolio() {
             <h1 className="animate-rise mt-4 max-w-[18ch] font-display text-6xl leading-[1] text-balance md:text-8xl lg:text-9xl">
               Rivky
               <br />
-              <br />
               Grinberg
             </h1>
             <p className="animate-rise mt-8 max-w-[42ch] font-display text-2xl leading-snug text-balance text-foreground/90 md:text-3xl">
