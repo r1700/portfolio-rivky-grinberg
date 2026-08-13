@@ -141,7 +141,7 @@ const projects = [
 
 const skills = [
   { label: "Programming\u00A0Languages", icon: Code2, items: "C#, Java, Python, JavaScript, TypeScript, C, C++" },
-  { label: "Backend", icon: Server, items: "Node.js (Express.js), .NET Core" },
+  { label: "Backend", icon: Server, items: "ASP.NET Core, Node.js, Express.js, .NET Core, REST APIs" },
   { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, HTML5, CSS3" },
   { label: "Databases", icon: Database, items: "PostgreSQL, MongoDB, SQL Server, Supabase" },
   { label: "Tools", icon: Wrench, items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API" },
