@@ -188,14 +188,14 @@ function Portfolio() {
                 Available for opportunities
               </span>
             </div>
-            <p className="animate-rise mt-8 font-display text-4xl leading-[1] text-balance text-foreground/80 md:text-6xl lg:text-7xl">
+            <h1 className="animate-rise mt-8 font-display text-6xl leading-[1] text-balance md:text-8xl lg:text-9xl">
               Rivky Grinberg
-            </p>
-            <h1 className="animate-rise mt-4 max-w-[18ch] font-display text-6xl leading-[1] text-balance md:text-8xl lg:text-9xl">
+            </h1>
+            <p className="animate-rise mt-4 max-w-[18ch] font-display text-4xl leading-[1] text-balance text-foreground/80 md:text-6xl lg:text-7xl">
               Software
               <br />
               Developer
-            </h1>
+            </p>
             <p className="animate-rise mt-8 max-w-[42ch] font-display text-2xl leading-snug text-balance text-foreground/90 md:text-3xl">
               I build <TypedWord /> that quietly do the hard work.
             </p>
