@@ -145,7 +145,7 @@ const skills = [
   { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, HTML5, CSS3" },
   { label: "Databases", icon: Database, items: "PostgreSQL, MongoDB, SQL Server, Supabase, Redis" },
   { label: "Tools", icon: Wrench, items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API,  LLM Integration, JWT, Kafka, Jest" },
-  { label: "Systems", icon: Monitor, items: "Windows, Linux" },
+  { label: "Concepts", icon: Monitor, items: "Algorithms & Data Structures, Design Patterns, Software Architecture, Operating Systems, OOP,  Microservices " },
 ];
 
 function Portfolio() {
