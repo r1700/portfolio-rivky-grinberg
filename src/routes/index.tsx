@@ -26,17 +26,17 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Rivky Grinberg — Software Developer" },
+      { title: "Rivky Grinberg - Software Developer" },
       {
         name: "description",
         content:
-          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
+          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js, React.js and AI-integrated features.",
       },
-      { property: "og:title", content: "Rivky Grinberg — Software Developer" },
+      { property: "og:title", content: "Rivky Grinberg - Software Developer" },
       {
         property: "og:description",
         content:
-          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
+          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js, React.js and AI-integrated features.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -49,13 +49,10 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Rivky Grinberg",
           jobTitle: "Software Developer",
-          email: "mailto:r6731700@gmail.com",
+          email: "mailto:rivky.grinberg@gmail.com",
           telephone: "+972-55-6731700",
           url: "https://github.com/r1700",
-          sameAs: [
-            "https://github.com/r1700",
-            "https://www.linkedin.com/in/rivky-grinberg",
-          ],
+          sameAs: ["https://github.com/r1700", "https://www.linkedin.com/in/rivky-grinberg"],
           knowsLanguage: ["Hebrew", "English"],
         }),
       },
@@ -63,6 +60,11 @@ export const Route = createFileRoute("/")({
   }),
   component: Portfolio,
 });
+
+// Where the contact form posts. Replace YOUR_FORM_ID with the id Formspree gives
+// you (formspree.io -> New Form). The id is public — it belongs in the code, and
+// Formspree forwards each submission to the email on that account.
+const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 const marquee = [
   "ASP.NET Core",
@@ -81,7 +83,7 @@ const marquee = [
 
 const experience = [
   {
-    period: "2026 — Present",
+    period: "2026 - Present",
     role: "Backend Developer",
     org: "Early-stage startup",
     points: [
@@ -105,7 +107,7 @@ const experience = [
   {
     period: "2025",
     role: "Full Stack Developer Intern",
-    org: "DE-PARK — Autonomous Parking System",
+    org: "DE-PARK - Autonomous Parking System",
     points: [
       "Developed a real-time autonomous parking management system for vehicles, queues and parking slots, including mobile and tablet interfaces.",
       "Built backend services with Node.js (Express), PostgreSQL and Sequelize, including testing.",
@@ -118,7 +120,7 @@ const experience = [
 
 const projects = [
   {
-    name: "ClickQuiz — AI Exam Creation",
+    name: "ClickQuiz - AI Exam Creation",
     summary:
       "Web system that lets teachers create, edit, manage and export exams with AI assistance.",
     stack: ["Node.js", "Express", "React", "MongoDB", "OpenAI API"],
@@ -141,12 +143,30 @@ const projects = [
 ];
 
 const skills = [
-  { label: "Programming\u00A0Languages", icon: Code2, items: "C#, Java, Python, JavaScript, TypeScript, C, C++" },
-  { label: "Backend", icon: Server, items: "ASP.NET Core, Node.js, Express.js, .NET Core, REST APIs" },
+  {
+    label: "Programming\u00A0Languages",
+    icon: Code2,
+    items: "C#, Java, Python, JavaScript, TypeScript, C, C++",
+  },
+  {
+    label: "Backend",
+    icon: Server,
+    items: "ASP.NET Core, Node.js, Express.js, .NET Core, REST APIs",
+  },
   { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, HTML5, CSS3" },
   { label: "Databases", icon: Database, items: "PostgreSQL, MongoDB, SQL Server, Supabase, Redis" },
-  { label: "Tools", icon: Wrench, items: "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API,  LLM Integration, JWT, Kafka, Jest" },
-  { label: "Concepts", icon: Monitor, items: "Algorithms & Data Structures, Software Architecture, Operating Systems,\u00A0OOP, Design Patterns, Microservices" },
+  {
+    label: "Tools",
+    icon: Wrench,
+    items:
+      "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API,  LLM Integration, JWT, Kafka, Jest",
+  },
+  {
+    label: "Concepts",
+    icon: Monitor,
+    items:
+      "Algorithms & Data Structures, Software Architecture, Operating Systems,\u00A0OOP, Design Patterns, Microservices",
+  },
 ];
 
 function Portfolio() {
@@ -210,7 +230,7 @@ function Portfolio() {
             </p>
             <div className="animate-rise mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="mailto:r6731700@gmail.com"
+                href="mailto:rivky.grinberg@gmail.com"
                 className="group rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Get in touch
@@ -300,9 +320,7 @@ function Portfolio() {
               return (
                 <Reveal key={project.name} delay={i * 140}>
                   <article className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card">
-                    <div
-                      className={`relative h-32 bg-gradient-to-br ${project.accent} p-6`}
-                    >
+                    <div className={`relative h-32 bg-gradient-to-br ${project.accent} p-6`}>
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl border bg-card/90 shadow-sm backdrop-blur-sm">
                         <Icon className="size-6 text-primary" strokeWidth={1.8} />
                       </div>
@@ -314,9 +332,7 @@ function Portfolio() {
                     </div>
                     <div className="flex flex-1 flex-col p-6">
                       <div className="flex items-start justify-between gap-3">
-                        <h3 className="font-display text-2xl leading-tight">
-                          {project.name}
-                        </h3>
+                        <h3 className="font-display text-2xl leading-tight">{project.name}</h3>
                         <a
                           href={project.links[0]?.href}
                           target="_blank"
@@ -408,14 +424,19 @@ function Portfolio() {
                   Open to backend and full-stack opportunities.
                 </h3>
                 <p className="mt-4 max-w-[42ch] leading-relaxed text-muted-foreground">
-                  Have a role, project or question? Fill out the form or reach out directly — I'll get back to you as soon as I can.
+                  Have a role, project or question? Fill out the form or reach out directly — I'll
+                  get back to you as soon as I can.
                 </p>
                 <div className="mt-8 flex flex-col gap-4">
                   {[
-                    { label: "r6731700@gmail.com", href: "mailto:r6731700@gmail.com", icon: Mail },
+                    { label: "rivky.grinberg@gmail.com", href: "mailto:rivky.grinberg@gmail.com", icon: Mail },
                     { label: "+972-55-6731700", href: "tel:+972556731700", icon: Phone },
                     { label: "github.com/r1700", href: "https://github.com/r1700", icon: Github },
-                    { label: "linkedin.com/in/rivky-grinberg", href: "https://www.linkedin.com/in/rivky-grinberg", icon: Linkedin },
+                    {
+                      label: "linkedin.com/in/rivky-grinberg",
+                      href: "https://www.linkedin.com/in/rivky-grinberg",
+                      icon: Linkedin,
+                    },
                   ].map((link) => {
                     const Icon = link.icon;
                     return (
@@ -426,7 +447,10 @@ function Portfolio() {
                         rel="noopener noreferrer"
                         className="group inline-flex w-fit items-center gap-2.5 text-sm font-medium text-foreground transition-colors hover:text-primary"
                       >
-                        <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" strokeWidth={1.8} />
+                        <Icon
+                          className="size-4 text-muted-foreground transition-colors group-hover:text-primary"
+                          strokeWidth={1.8}
+                        />
                         <span className="underline-sweep">{link.label}</span>
                         <ArrowUpRight className="size-3.5 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
                       </a>
@@ -456,17 +480,48 @@ function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (sending) return;
+
     if (!name.trim() || !email.trim() || !message.trim()) {
       toast.error("Please fill in all fields.");
       return;
     }
-    const subject = `Message from ${name} via portfolio`;
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:r6731700@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email client...");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      toast.error("That email address doesn't look right.");
+      return;
+    }
+
+    setSending(true);
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+          _subject: `Portfolio message from ${name.trim()}`,
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Request failed with ${response.status}`);
+
+      setSent(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      toast.success("Message sent — I'll get back to you soon.");
+    } catch (error) {
+      console.error(error);
+      toast.error("Couldn't send the message. Please email me directly at rivky.grinberg@gmail.com.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -510,13 +565,28 @@ function ContactForm() {
           className="w-full resize-none rounded-xl border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
         />
       </div>
+      {/* Honeypot: hidden from people, tempting to bots. Formspree drops anything that fills it. */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+        value=""
+        onChange={() => {}}
+      />
       <button
         type="submit"
-        className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
+        disabled={sending}
+        className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
       >
-        Send message
+        {sending ? "Sending..." : "Send message"}
         <Send className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
       </button>
+      <p aria-live="polite" className="min-h-5 text-center text-xs text-muted-foreground">
+        {sent ? "Thanks — your message is on its way." : ""}
+      </p>
     </form>
   );
 }
