@@ -1,18 +1,17 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ChatBot } from "@/components/ChatBot";
 
 function NotFoundComponent() {
   return (
@@ -39,9 +38,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -74,7 +70,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -82,17 +78,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Rivky Grinberg — Software Developer" },
       {
         name: "description",
-        content: "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
+        content:
+          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
       },
       { name: "author", content: "Rivky Grinberg" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Rivky Grinberg — Software Developer" },
       { name: "twitter:title", content: "Rivky Grinberg — Software Developer" },
-      { property: "og:description", content: "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features." },
-      { name: "twitter:description", content: "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5682769f2cc5dfa1b1b7a2e7a1912737/id-preview-9159f36d--fd3c4234-00fd-4cdb-a088-1f6258d28385.lovable.app-1786434753513.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5682769f2cc5dfa1b1b7a2e7a1912737/id-preview-9159f36d--fd3c4234-00fd-4cdb-a088-1f6258d28385.lovable.app-1786434753513.png" },
+      {
+        property: "og:description",
+        content:
+          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Backend & full-stack developer specializing in REST APIs, ASP.NET Core, Node.js and AI-integrated features.",
+      },
+      { property: "og:image", content: "/og-image.png" },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [
       {
@@ -130,15 +135,13 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <Toaster position="bottom-right" />
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <Outlet />
+      <ChatBot />
+      {/* Top-right so toasts don't sit under the chat launcher. */}
+      <Toaster position="top-right" />
+    </ThemeProvider>
   );
 }
