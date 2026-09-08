@@ -50,7 +50,6 @@ export const Route = createFileRoute("/")({
           name: "Rivky Grinberg",
           jobTitle: "Software Developer",
           email: "mailto:rivky.grinberg@gmail.com",
-          telephone: "+972-55-6731700",
           url: "https://github.com/r1700",
           sameAs: ["https://github.com/r1700", "https://www.linkedin.com/in/rivky-grinberg"],
           knowsLanguage: ["Hebrew", "English"],
@@ -87,12 +86,11 @@ const experience = [
     role: "Backend Developer",
     org: "Early-stage startup",
     points: [
-      "Build backend services and REST APIs with ASP.NET Core (C#).",
-      "Ship AI-powered backend features by integrating LLMs into application workflows.",
-      "Implement JWT-based authentication and authorization.",
-      "Improve API performance through query optimization and caching.",
-      "Work in Docker-based development environments.",
-    ],
+      "Develop backend services and REST APIs using ASP.NET Core (C#) in a fast-paced startup environment.",
+      "Develop AI-powered backend features by integrating LLMs and AI APIs into core application workflows.",
+      "Implement JWT-based authentication and authorization systems to ensure secure API access.",
+      "Improved API performance through systematic query optimization and Redis based caching mechanisms.",
+      "Work with Docker-based development environments and automated CI/CD workflows for deployment."],
     stack: [
       "ASP.NET Core",
       "C#",
@@ -101,20 +99,23 @@ const experience = [
       "Kafka",
       "Docker",
       "JWT",
+      "xUnit",
+      "Moq",
+      "Microservices",
       "LLM Integration",
     ],
   },
   {
     period: "2025",
-    role: "Full Stack Developer Intern",
+    role: "Full Stack Developer",
     org: "DE-PARK - Autonomous Parking System",
     points: [
-      "Developed a real-time autonomous parking management system for vehicles, queues and parking slots, including mobile and tablet interfaces.",
-      "Built backend services with Node.js (Express), PostgreSQL and Sequelize, including testing.",
-      "Developed responsive frontend interfaces with React and TypeScript.",
-      "Collaborated in a team environment using Git/GitHub.",
+      "Developed a real-time, full-stack autonomous parking management system for vehicles, queues, and parking slots, including interfaces for mobile and tablet devices.",
+      "Built robust backend services using Node.js (Express), PostgreSQL, and Sequelize, including unit testing.",
+      "Developed responsive frontend interfaces using React.js and TypeScript, ensuring a user-friendly experience.",
+      "Collaborated effectively within a team environment, utilizing Git/GitHub for version control and code review.",
     ],
-    stack: ["Node.js", "Express", "React", "TypeScript", "PostgreSQL", "Sequelize", "Jest", "Git"],
+    stack: ["Node.js", "Express", "React", "TypeScript", "REST APIs", "PostgreSQL", "Sequelize", "Jest", "Git"],
   },
 ];
 
@@ -144,22 +145,22 @@ const projects = [
 
 const skills = [
   {
-    label: "Programming\u00A0Languages",
+    label: "AI",
     icon: Code2,
-    items: "C#, Java, Python, JavaScript, TypeScript, C, C++",
+    items: "LLM Integration, OpenAI API, AI-assisted Development (Claude, GitHub Copilot, GPT)",
   },
   {
     label: "Backend",
     icon: Server,
-    items: "ASP.NET Core, Node.js, Express.js, .NET Core, REST APIs",
+    items: "ASP.NET Core, Node.js, Express.js, .NET Core, C#, Java, Python, REST APIs, Entity Framework",
   },
-  { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, HTML5, CSS3" },
+  { label: "Frontend", icon: Layout, items: "React.js, Redux, Angular, TypeScript, JavaScript, HTML5, CSS3" },
   { label: "Databases", icon: Database, items: "PostgreSQL, MongoDB, SQL Server, Supabase, Redis" },
   {
-    label: "Tools",
+    label: "Tools & Testing",
     icon: Wrench,
     items:
-      "Git, GitHub, Docker, Postman, Sequelize, Entity Framework, OpenAI API,  LLM Integration, JWT, Kafka, Jest",
+      "Git, GitHub, Docker, CI/CD Workflows, Postman, Sequelize, JWT, Kafka, Redis, Unit Testing, Jest, xUnit, Moq",
   },
   {
     label: "Concepts",
@@ -430,7 +431,6 @@ function Portfolio() {
                 <div className="mt-8 flex flex-col gap-4">
                   {[
                     { label: "rivky.grinberg@gmail.com", href: "mailto:rivky.grinberg@gmail.com", icon: Mail },
-                    { label: "+972-55-6731700", href: "tel:+972556731700", icon: Phone },
                     { label: "github.com/r1700", href: "https://github.com/r1700", icon: Github },
                     {
                       label: "linkedin.com/in/rivky-grinberg",
@@ -574,7 +574,7 @@ function ContactForm() {
         aria-hidden="true"
         className="hidden"
         value=""
-        onChange={() => {}}
+        onChange={() => { }}
       />
       <button
         type="submit"
