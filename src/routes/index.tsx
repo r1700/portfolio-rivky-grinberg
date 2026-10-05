@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Reveal } from "@/components/Reveal";
 import { TypedWord } from "@/components/TypedWord";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { sendContactMessage } from "@/lib/contact";
 import {
   Brain,
   Megaphone,
@@ -59,11 +60,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Portfolio,
 });
-
-// Where the contact form posts. Replace YOUR_FORM_ID with the id Formspree gives
-// you (formspree.io -> New Form). The id is public — it belongs in the code, and
-// Formspree forwards each submission to the email on that account.
-const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 const marquee = [
   "ASP.NET Core",
@@ -482,6 +478,7 @@ function ContactForm() {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -498,18 +495,15 @@ function ContactForm() {
 
     setSending(true);
     try {
-      const response = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
-          _subject: `Portfolio message from ${name.trim()}`,
-        }),
+      const result = await sendContactMessage({
+        data: { name: name.trim(), email: email.trim(), message: message.trim(), website: honeypot },
       });
 
-      if (!response.ok) throw new Error(`Request failed with ${response.status}`);
+      if (result.error === "rate-limited") {
+        toast.error("Too many messages in a short time — please try again in a few minutes.");
+        return;
+      }
+      if (!result.ok) throw new Error(`Contact form failed: ${result.error}`);
 
       setSent(true);
       setName("");
@@ -565,16 +559,16 @@ function ContactForm() {
           className="w-full resize-none rounded-xl border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
         />
       </div>
-      {/* Honeypot: hidden from people, tempting to bots. Formspree drops anything that fills it. */}
+      {/* Honeypot: hidden from people, tempting to bots. The server drops anything that fills it. */}
       <input
         type="text"
-        name="_gotcha"
+        name="website"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"
         className="hidden"
-        value=""
-        onChange={() => { }}
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
       />
       <button
         type="submit"
