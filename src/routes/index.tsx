@@ -21,7 +21,6 @@ import {
   Play,
   X,
   Mail,
-  Phone,
   Linkedin,
   Send,
   FileDown,
