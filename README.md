@@ -7,7 +7,7 @@
 My personal portfolio: who I am, what I've built, and a way to get in touch.
 It also has an AI assistant that answers questions about me.
 
-[Live site](https://portfolio-rivky-grinberg.vercel.app/) · [GitHub](https://github.com/r1700) · [LinkedIn](https://www.linkedin.com/in/rivky-grinberg) · [Email](mailto:rivky.grinberg@gmail.com)
+[Live site](https://portfolio-rivky-grinberg.vercel.app/) 
 
 </div>
 
