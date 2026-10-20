@@ -17,6 +17,9 @@ import {
   ArrowUpRight,
   Github,
   Globe,
+  Puzzle,
+  Play,
+  X,
   Mail,
   Phone,
   Linkedin,
@@ -80,16 +83,19 @@ const experience = [
   {
     period: "2026 - Present",
     role: "Backend Developer",
-    org: "Early-stage startup",
+    org: "Waybid",
     points: [
       "Develop backend services and REST APIs using ASP.NET Core (C#) in a fast-paced startup environment.",
-      "Develop AI-powered backend features by integrating LLMs and AI APIs into core application workflows.",
+      "Develop AI-powered features by integrating LLMs and AI APIs, including prompt engineering, structured outputs, validation, and tool calling.",
+      "Develop and maintain frontend components using React and TypeScript.",
       "Implement JWT-based authentication and authorization systems to ensure secure API access.",
       "Improved API performance through systematic query optimization and Redis based caching mechanisms.",
       "Work with Docker-based development environments and automated CI/CD workflows for deployment."],
     stack: [
       "ASP.NET Core",
       "C#",
+      "React",
+      "TypeScript",
       "PostgreSQL",
       "Redis",
       "Kafka",
@@ -99,6 +105,7 @@ const experience = [
       "Moq",
       "Microservices",
       "LLM Integration",
+      "Prompt Engineering"
     ],
   },
   {
@@ -137,13 +144,23 @@ const projects = [
     accent: "from-accent/20 to-primary/20",
     links: [{ label: "Source", href: "https://github.com/r1700/advertising_project" }],
   },
+  {
+    name: "MultiChatSender - Chrome Extension",
+    summary:
+      "Chrome extension (Manifest V3) that sends one prompt to ChatGPT, Claude and Gemini at once. See all the answers together in a side panel, compare them, and send from any site. No server, no API keys.",
+    stack: ["Chrome Extension", "JavaScript", "Manifest V3", "Side Panel API", "i18n"],
+    icon: Puzzle,
+    accent: "from-primary/20 to-accent/20",
+    video: "/MultiChatSender_reel_EN.mp4",
+    links: [{ label: "Source", href: "https://github.com/r1700/multi-ai-chat-extension" }],
+  },
 ];
 
 const skills = [
   {
     label: "AI",
     icon: Code2,
-    items: "LLM Integration, OpenAI API, AI-assisted Development (Claude, GitHub Copilot, GPT)",
+    items: "LLM Integration,Prompt Engineering,Generative AI, AI APIs, OpenAI API, Structured Outputs, AI-assisted Development (Claude, GitHub Copilot, GPT)",
   },
   {
     label: "Backend",
@@ -167,6 +184,7 @@ const skills = [
 ];
 
 function Portfolio() {
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   return (
     <div className="min-h-screen">
       <nav className="sticky top-0 z-50 border-b bg-background/85 backdrop-blur-md">
@@ -227,7 +245,7 @@ function Portfolio() {
             </p>
             <div className="animate-rise mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="mailto:rivky.grinberg@gmail.com"
+                href="#contact"
                 className="group rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Get in touch
@@ -311,7 +329,7 @@ function Portfolio() {
           <Reveal>
             <h2 className="eyebrow">Selected projects</h2>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, i) => {
               const Icon = project.icon;
               return (
@@ -330,6 +348,16 @@ function Portfolio() {
                     <div className="flex flex-1 flex-col p-6">
                       <div className="flex items-start justify-between gap-3">
                         <h3 className="font-display text-2xl leading-tight">{project.name}</h3>
+                        {"video" in project && project.video ? (
+                          <button
+                            type="button"
+                            onClick={() => setVideoSrc(project.video)}
+                            className="mt-1 shrink-0 rounded-full border p-2 text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground"
+                            aria-label={`Watch ${project.name} demo`}
+                          >
+                            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          </button>
+                        ) : (
                         <a
                           href={project.links[0]?.href}
                           target="_blank"
@@ -339,6 +367,7 @@ function Portfolio() {
                         >
                           <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </a>
+                        )}
                       </div>
                       <p className="mt-3 flex-1 leading-relaxed text-muted-foreground text-pretty">
                         {project.summary}
@@ -354,12 +383,13 @@ function Portfolio() {
                         ))}
                       </div>
                       <div className="mt-5 flex flex-wrap gap-3 border-t pt-5">
-                        {project.links.map((link) => {
+                        {project.links.filter((link) => link.href).map((link) => {
                           const isSource =
                             link.label.toLowerCase().includes("source") ||
                             link.href.includes("github.com");
-                          const LinkIcon = isSource ? Github : Globe;
-                          const shortLabel = isSource ? "Code" : "Live";
+                          const isVideo = link.label.toLowerCase().includes("video");
+                          const LinkIcon = isVideo ? Play : isSource ? Github : Globe;
+                          const shortLabel = isVideo ? "Demo" : isSource ? "Code" : "Live";
                           return (
                             <a
                               key={link.label}
@@ -373,6 +403,16 @@ function Portfolio() {
                             </a>
                           );
                         })}
+                        {"video" in project && project.video && (
+                          <button
+                            type="button"
+                            onClick={() => setVideoSrc(project.video)}
+                            className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:border-primary/40 hover:bg-surface hover:text-foreground"
+                          >
+                            <Play className="size-4" />
+                            Watch demo
+                          </button>
+                        )}
                       </div>
                     </div>
                   </article>
@@ -461,6 +501,36 @@ function Portfolio() {
           </div>
         </section>
       </main>
+
+      {videoSrc && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Project demo video"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          onClick={() => setVideoSrc(null)}
+          onKeyDown={(e) => e.key === "Escape" && setVideoSrc(null)}
+        >
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              autoFocus
+              onClick={() => setVideoSrc(null)}
+              aria-label="Close video"
+              className="absolute -top-3 -right-3 z-10 flex size-8 items-center justify-center rounded-full bg-card text-foreground shadow-md"
+            >
+              <X className="size-4" />
+            </button>
+            <video
+              src={videoSrc}
+              controls
+              autoPlay
+              playsInline
+              className="max-h-[85vh] max-w-[90vw] rounded-2xl bg-black"
+            />
+          </div>
+        </div>
+      )}
 
       <footer className="border-t">
         <div className="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-10 text-xs tracking-widest text-muted-foreground uppercase sm:flex-row sm:justify-between">
