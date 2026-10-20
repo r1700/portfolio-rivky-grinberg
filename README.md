@@ -1,111 +1,98 @@
-# Rivky Grinberg — Portfolio
-🔗 **Live Demo:** [portfolio](https://portfolio-rivky-grinberg.vercel.app/)
+<div align="center">
 
+# Rivky Grinberg
 
-Personal portfolio site: experience, selected projects, skills and contact.
+**Software Developer: Backend & Full Stack**
 
-## Tech stack
+My personal portfolio: who I am, what I've built, and a way to get in touch.
+It also has an AI assistant that answers questions about me.
 
-- **React 19** + **TypeScript**
-- **TanStack Start** / **TanStack Router** — file-based routing with SSR
-- **Vite 8** — build tooling
-- **Tailwind CSS v4** — styling, themed via CSS variables
-- **Nitro** — server build (auto-detects the deploy target)
+[Live site](https://portfolio-rivky-grinberg.vercel.app/) · [GitHub](https://github.com/r1700) · [LinkedIn](https://www.linkedin.com/in/rivky-grinberg) · [Email](mailto:rivky.grinberg@gmail.com)
 
-## Getting started
+</div>
+
+---
+
+## About the site
+
+A single-page portfolio, designed to be read quickly by a recruiter or a hiring
+manager and to leave a good impression in under a minute.
+
+| Section        | What's there                                                              |
+| -------------- | ------------------------------------------------------------------------- |
+| **Hero**       | Short intro, animated tagline, and buttons for contact, projects and CV   |
+| **Experience** | Current backend role and previous full-stack work, with the tech used      |
+| **Projects**   | ClickQuiz, the Subscription & Advertising Platform and MultiChatSender     |
+| **Skills**     | AI, backend, frontend, databases, tools and core concepts                  |
+| **Contact**    | A contact form that emails me directly, plus my links                      |
+
+## Highlights
+
+- **"Ask about Rivky" AI assistant.** A chat widget where visitors can ask about
+  my experience, projects and way of working. It answers only from a profile I
+  wrote, and says so honestly when it doesn't know something.
+- **Contact form that really sends mail.** Messages arrive in my inbox, with
+  spam protection (a hidden honeypot field and per-visitor rate limiting).
+- **Project demos.** Each project links to its code, and MultiChatSender has a
+  demo video that opens in a pop-up.
+- **Light and dark mode**, scroll animations, and a layout that works on phones,
+  tablets and desktops.
+- **Download CV** straight from the hero section.
+
+## Projects featured
+
+- **ClickQuiz:** AI-assisted exam creation for teachers. Generates ready-to-use
+  exams and answer sheets. ([demo](https://click-quiz.vercel.app) ·
+  [code](https://github.com/r1700/ClickQuiz-Creating-tests))
+- **Subscription & Advertising Platform:** full-stack system for business
+  subscriptions and ad management, built with C#, .NET Core and React.
+  ([code](https://github.com/r1700/advertising_project))
+- **MultiChatSender:** a Chrome extension that sends one prompt to ChatGPT,
+  Claude and Gemini at once and shows all the answers together in a side panel.
+  ([code](https://github.com/r1700/multi-ai-chat-extension))
+
+## How it's built
+
+React 19 and TypeScript on **TanStack Start** (file-based routing with
+server-side rendering), bundled with Vite and styled with Tailwind CSS v4.
+Server functions handle the chatbot (Google Gemini) and the contact form
+(Resend), so API keys never reach the browser.
+
+```
+src/
+  routes/       The page itself (index.tsx) and the document shell
+  components/   Chat widget, scroll reveal, typed hero word, theme toggle
+  data/bio.ts   Everything the AI assistant knows about me
+  lib/          Server functions: chatbot and contact form
+public/         CV, social preview image, project demo video
+```
+
+Page content (experience, projects, skills) lives in arrays at the top of
+`src/routes/index.tsx`. To change what the assistant knows, edit only
+`src/data/bio.ts`.
+
+## Run it locally
 
 Requires Node.js 20+.
 
 ```sh
 npm install
-npm run dev
+cp .env.example .env   # then fill in the keys below
+npm run dev            # http://localhost:3000
 ```
 
-The dev server runs at http://localhost:3000.
+| Variable                          | Needed for                        |
+| --------------------------------- | --------------------------------- |
+| `GEMINI_API_KEY`                  | The AI assistant                  |
+| `RESEND_API_KEY`, `NOTIFY_EMAIL`  | Contact form and chat transcripts |
 
-## Scripts
+Without the keys the site still works: the assistant replies that it isn't
+configured yet. Never commit `.env`; it is git-ignored.
 
-| Command           | Description                        |
-| ----------------- | ---------------------------------- |
-| `npm run dev`     | Start the dev server               |
-| `npm run build`   | Production build into `.output/`   |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint`    | Run ESLint                         |
-| `npm run format`  | Format with Prettier               |
-
-## Project structure
-
-Most of the site lives in a single route.
-
-```
-src/
-  routes/
-    __root.tsx      Document shell, <head> metadata, 404 and error pages
-    index.tsx       The entire page — content lives in arrays at the top
-  data/
-    bio.ts          Everything the AI assistant knows about Rivky
-  components/
-    ChatBot.tsx     Floating "Ask about Rivky" assistant
-    Reveal.tsx      Scroll-triggered reveal animation
-    TypedWord.tsx   Typewriter effect in the hero
-    ThemeProvider.tsx / ThemeToggle.tsx   Dark mode
-    ui/sonner.tsx   Toast styling
-  hooks/
-    use-reveal.ts   IntersectionObserver hook behind <Reveal>
-  lib/
-    ask-bot.ts      Server functions behind the assistant (API keys live here)
-    error-capture.ts / error-page.ts   SSR error handling
-  styles.css        Design tokens: colors, fonts, animations
-public/
-  Rivky_Grinberg_CV.pdf
-  og-image.png      Social share preview
-```
-
-To edit page content — experience, projects, skills — change the arrays at the
-top of `src/routes/index.tsx`.
-
-## AI assistant
-
-A floating button in the bottom-right opens a chat where visitors can ask
-questions about Rivky. Answers come from Google's Gemini API, constrained to the
-profile in `src/data/bio.ts`.
-
-**To change what the bot knows, edit `src/data/bio.ts` — nothing else.** It is
-plain text. Anything not written there, the bot is instructed to admit it doesn't
-know and point to the contact email.
-
-### Setup
-
-1. Get a free API key at https://aistudio.google.com/apikey.
-2. `cp .env.example .env` and paste the key into `GEMINI_API_KEY`.
-3. `npm run dev` — the assistant is live.
-4. For the deployed site, add the same variable in your host's dashboard
-   (Vercel/Netlify → Settings → Environment Variables), then redeploy.
-
-Without a key the widget still opens and replies with a polite "not configured
-yet" message, so the site never breaks.
-
-### Conversation emails (optional)
-
-Set `RESEND_API_KEY` (free at https://resend.com) and `NOTIFY_EMAIL` to receive
-each conversation by email once the visitor closes the chat or leaves the page.
-The default sender `onboarding@resend.dev` needs no domain, but Resend will only
-deliver it to the address your Resend account is registered with. Leave the
-variables empty to turn the feature off.
-
-### Cost and limits
-
-Gemini's free tier has a daily quota; there is no charge unless you enable
-billing. The server also caps each visitor at 20 questions per 10 minutes, each
-message at 500 characters, and keeps only the last 12 turns as context. Adjust
-these at the top of `src/lib/ask-bot.ts`.
-
-Never put an API key anywhere under `src/` other than reading it from
-`process.env` inside a `.handler()` — those run on the server only. `.env` is
-git-ignored; keys committed to GitHub get scraped within minutes.
+Other scripts: `npm run build`, `npm run preview`, `npm run lint`, `npm run format`.
 
 ## Deployment
 
-`npm run build` produces `.output/`. Nitro detects the host at build time, so
-the same build works on Vercel, Netlify, Cloudflare or a plain Node server
-without extra configuration.
+`npm run build` produces a `.output/` folder. Nitro detects the host at build
+time, so the same build runs on Vercel, Netlify, Cloudflare or a plain Node
+server. Add the environment variables above in the host's dashboard.

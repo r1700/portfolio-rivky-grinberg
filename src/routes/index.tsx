@@ -461,7 +461,7 @@ function Portfolio() {
                   Open to backend and full-stack opportunities.
                 </h3>
                 <p className="mt-4 max-w-[42ch] leading-relaxed text-muted-foreground">
-                  Have a role, project or question? Fill out the form or reach out directly — I'll
+                  Have a role, project or question? Fill out the form or reach out directly - I'll
                   get back to you as soon as I can.
                 </p>
                 <div className="mt-8 flex flex-col gap-4">
@@ -570,7 +570,7 @@ function ContactForm() {
       });
 
       if (result.error === "rate-limited") {
-        toast.error("Too many messages in a short time — please try again in a few minutes.");
+        toast.error("Too many messages in a short time - please try again in a few minutes.");
         return;
       }
       if (!result.ok) throw new Error(`Contact form failed: ${result.error}`);
@@ -579,7 +579,7 @@ function ContactForm() {
       setName("");
       setEmail("");
       setMessage("");
-      toast.success("Message sent — I'll get back to you soon.");
+      toast.success("Message sent - I'll get back to you soon.");
     } catch (error) {
       console.error(error);
       toast.error("Couldn't send the message. Please email me directly at rivky.grinberg@gmail.com.");
@@ -649,7 +649,7 @@ function ContactForm() {
         <Send className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
       </button>
       <p aria-live="polite" className="min-h-5 text-center text-xs text-muted-foreground">
-        {sent ? "Thanks — your message is on its way." : ""}
+        {sent ? "Thanks - your message is on its way." : ""}
       </p>
     </form>
   );

@@ -23,11 +23,11 @@ export type ContactMessage = {
   name: string;
   email: string;
   message: string;
-  /** Honeypot — real visitors never see it, so anything here is a bot. */
+  /** Honeypot - real visitors never see it, so anything here is a bot. */
   website?: string;
 };
 
-/** Per-IP counters. Resets whenever the server restarts — good enough here. */
+/** Per-IP counters. Resets whenever the server restarts - good enough here. */
 const hits = new Map<string, { count: number; resetAt: number }>();
 
 function isRateLimited(ip: string) {
@@ -81,7 +81,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
     const apiKey = process.env["RESEND_API_KEY"];
     const to = process.env["NOTIFY_EMAIL"];
     if (!apiKey || !to) {
-      console.error("RESEND_API_KEY / NOTIFY_EMAIL are not set — contact form can't send.");
+      console.error("RESEND_API_KEY / NOTIFY_EMAIL are not set - contact form can't send.");
       return { ok: false, error: "not-configured" };
     }
 

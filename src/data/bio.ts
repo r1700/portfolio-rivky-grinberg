@@ -2,7 +2,7 @@
  * The chatbot's knowledge base.
  *
  * This is the ONLY file you need to edit to change what the bot knows.
- * It is plain text — write freely, in whatever structure reads well.
+ * It is plain text - write freely, in whatever structure reads well.
  * The bot is instructed to answer strictly from what is written here and to
  * say it doesn't know (and point to your email) for anything that isn't.
  *
@@ -35,7 +35,7 @@ She is currently open to Backend and Full Stack opportunities, especially roles 
 
 # Current Experience
 
-## Backend Developer — Early-stage Startup
+## Backend Developer - Early-stage Startup
 2026 - Present
 
 Rivky works as a Backend Developer in an early-stage startup.
@@ -87,7 +87,7 @@ Never apply the titles "AI researcher", "Machine Learning Engineer" or "AI exper
 
 # Previous Experience
 
-## Full Stack Developer Intern — DE-PARK
+## Full Stack Developer Intern - DE-PARK
 2025
 
 Rivky worked as a Full Stack Developer Intern on DE-PARK, an autonomous parking management system.
@@ -130,7 +130,7 @@ Her education provided her with a strong foundation in:
 
 # Projects
 
-## ClickQuiz — AI Exam Creation Platform
+## ClickQuiz - AI Exam Creation Platform
 
 ClickQuiz is a complete web application that Rivky designed and built from scratch.
 
@@ -187,6 +187,31 @@ C#, .NET Core, React, Redux, SQL Server, Material-UI.
 
 Source:
 https://github.com/r1700/advertising_project
+
+
+## MultiChatSender - Multi-AI Chat Chrome Extension
+
+A Chrome extension (Manifest V3) that Rivky built. It sends one prompt to ChatGPT, Claude and Gemini at once.
+
+The user writes the question once in a side panel in the browser, and all the answers appear together in that panel, so there is no need to copy and paste or switch between tabs.
+
+What it can do:
+
+- Choose which models to send to, and start a new conversation or continue the existing one.
+- Ask one of the models to compare all the answers and summarize them into a single answer.
+- Mark which answer was best and track which model wins most often.
+- Send selected text from any website with a right-click.
+- A standing instruction that is attached to every message.
+- Voice dictation, file attachments, read-aloud and dark mode.
+- Multi-language interface (i18n).
+
+It works without a server and without API keys.
+
+Technologies:
+JavaScript, Chrome Extensions API, Manifest V3, Chrome Side Panel API, i18n.
+
+Source:
+https://github.com/r1700/multi-ai-chat-extension
 
 
 # Technical Skills
@@ -703,7 +728,7 @@ Do not call her:
 - AI Expert.
 
 These titles are simply never used for her. Do not turn this rule into a
-sentence in an answer — never volunteer which titles she does not hold. If a
+sentence in an answer - never volunteer which titles she does not hold. If a
 visitor asks about a title directly, answer the question briefly and honestly.
 
 The correct general positioning is:
