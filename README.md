@@ -60,15 +60,19 @@ Server functions handle the chatbot (Google Gemini) and the contact form
 
 ```
 src/
-  routes/       The page itself (index.tsx) and the document shell
-  components/   Chat widget, scroll reveal, typed hero word, theme toggle
-  data/bio.ts   Everything the AI assistant knows about me
-  lib/          Server functions: chatbot and contact form
-public/         CV, social preview image, project demo video
+  routes/            The home page (index.tsx) and the document shell
+  components/
+    sections/        Hero, Experience, Projects, Skills, Contact (with the form)
+    ...              Navbar, Footer, video pop-up, chat widget, theme toggle
+  data/
+    portfolio.ts     Experience, projects and skills shown on the page
+    bio.ts           Everything the AI assistant knows about me
+  lib/               Server functions: chatbot and contact form
+public/              CV, social preview image, project demo video
 ```
 
-Page content (experience, projects, skills) lives in arrays at the top of
-`src/routes/index.tsx`. To change what the assistant knows, edit only
+To change what the page shows (experience, projects, skills), edit
+`src/data/portfolio.ts`. To change what the assistant knows, edit only
 `src/data/bio.ts`.
 
 ## Run it locally
